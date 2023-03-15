@@ -1,57 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Untitled</title>
-    <url>/2023/03/07/Untitled/</url>
-    <content><![CDATA[<p>sdfsdgd 撒发射点发生<br>第三帝国</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/1970/01/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Mac HFS</title>
-    <url>/2023/03/08/%E8%AF%84%E6%B5%8B/</url>
-    <content><![CDATA[<h1 id="Mac-HFS-格式移动硬盘数据恢复小记"><a href="#Mac-HFS-格式移动硬盘数据恢复小记" class="headerlink" title="Mac HFS 格式移动硬盘数据恢复小记"></a>Mac HFS 格式移动硬盘数据恢复小记</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前不久帮人装系统，因为系统镜像是在移动硬盘里，懒得往优盘拷贝了，于是直接把移动硬盘插到了待装系统的电脑上，想着配合硬盘里的 PE 直接就装了。</p>
-<p>然而，插上去好好的可以读出数据，拔下来就不行了，再插上去还是不行，瞬间想骂人了！大姐姐的房子就这么没了？</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>具体情况是，插到电脑显示无法读取数据。打开 <strong>DiskGenius</strong> (以下简称 DG) ，发现原本的两个分区没有了，硬盘是未分配的状态。</p>
-<p>东芝的 4T 移动硬盘，2T 为 NTFS 格式的 Windows 分区，2T 为 HFS 的 Mac 分区。</p>
-<p>细细想了一下，操作上并没有删除数据，分区瞬间丢失，应该只是分区表丢失，导致引导不了分区，但数据都还在，只差一个<strong>药引子</strong>让数据显示出来，跟删除了数据还是略有不同的。</p>
-<h2 id="NTFS-分区恢复"><a href="#NTFS-分区恢复" class="headerlink" title="NTFS 分区恢复"></a>NTFS 分区恢复</h2><p>用了 DG 的搜索分区功能，搜索出了 NTFS 分区，搜索有点慢，搜索出来后一秒恢复。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1%201.png" alt="NTFS 分区已找回，HFS分区丢失"><br><img src="https://assets.xushier.cn/pic/HDDRecovery/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1.png" alt="NTFS 分区已找回，HFS分区丢失"><br>这里有个技巧可以让搜索更快速，DG 的搜索分区是按柱面依次搜索，假如分了两个同样大小的分区，那么在总柱面数除以 2 得到的数的所在的小范围内搜索，就可以很快搜索到了。</p>
-<p>简单说就是估计一下要搜索的分区大概是在哪个柱面范围内开始，从那里开始搜索就可以了。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/DG%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE.png" alt="DG 扫描设置"><br>比如 4T 硬盘，分了两个区，各 2T，在 DG 里看到总柱面数是 480000，那么第一个分区从零开始扫描马上就能扫到，扫描第二个分区时设置范围，范围大致是 240000±1000 ，也很快就能扫描到。当然前提是 DG 支持的格式，不支持的话是扫描不到的。</p>
-<p>搜索到分区之后记得看下里面文件是否是你的文件，不是或者没有文件，可以忽略，继续扫描。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/DG%20%E6%89%AB%E6%8F%8F%E5%88%B0%E5%88%86%E5%8C%BA.png" alt="DG扫描到分区"><br>因为 DG 不支持对 HFS 格式分区进行搜索，于是乎，踏上了恢复 HFS 分区的漫漫长路。</p>
-<h2 id="HFS-分区恢复"><a href="#HFS-分区恢复" class="headerlink" title="HFS 分区恢复"></a>HFS 分区恢复</h2><p>一开始想，这也不算是恢复数据，只是搜一下分区，还原一下，应该很快，估计要不了多少软妹币。于是找淘宝，标价 9.9，进去一问<strong>要价 480</strong>。怒而自力更生，找数据恢复软件。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/%E6%B7%98%E5%AE%9D%E8%A6%81%E4%BB%B7.jpg" alt="淘宝要价"><br>前面说的 DG，以及 R-Studio (以下简称 RS)、EasyRecovery 等是以前就见过的。但万能的 <strong>DG 此时却不支持 HFS 格式扫描</strong>，R-Studio 以前用过一次，依稀记得界面很垃圾并且貌似没有恢复成功。</p>
-<p>是以首先尝试的是鼎鼎大名的 <strong>EasyRecovery</strong>。EasyRecovery 最新的 15 版用起来很不错，但是要收费的，找到了 14 版的 PJ 版，但扫描出来没有目录，远没有 15 版好用。</p>
-<p>于是又找了几个数据恢复软件，有 <strong>Do Your Data Recovery、Disk Drill、EaseUS Data Recovery Wizard、Wondershare Recoverit</strong>，一一试用。<img src="https://assets.xushier.cn/pic/HDDRecovery/%E8%BD%AF%E4%BB%B6%E5%9B%BE%E6%A0%87.png" alt="软件图标"></p>
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>Wondershare Recoverit 最垃圾，打开都要好一会儿，经常卡死，扫描不到未分配空间，界面好看有毛用。<img src="https://assets.xushier.cn/pic/HDDRecovery/recoverit%20%E5%8D%A1%E6%AD%BB.png" alt="recoverit 卡死"><br>Do Your Data Recovery、Disk Drill 和 EaseUS Data Recovery 的界面都较简约，也都<strong>不能扫描未分配空间</strong>，要扫描的话只能全盘扫描，花费很多时间。<img src="https://assets.xushier.cn/pic/HDDRecovery/DoYourData%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F.png" alt="DoYourData 只能全盘扫描"><br><img src="https://assets.xushier.cn/pic/HDDRecovery/EaseUS%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F.png" alt="EaseUS 只能全盘扫描"><br><img src="https://assets.xushier.cn/pic/HDDRecovery/DiskDrill%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F.png" alt="DiskDrill 只能全盘扫描"><br>Disk Drill 和 EaseUS Data Recovery 可以扫描出目录，但 <strong>Disk Drill 扫描时间巨长</strong>；</p>
-<p>EaseUS Data Recovery 在 Macbook 上扫描几分钟就<strong>停止读取硬盘</strong>了，在 Windows 上扫描一会儿就卡死了。</p>
-<p>花了几个小时，快要扫描完的时候停止读取硬盘或者卡死，不能保存扫描信息，想摔电脑的那种绝望，无法言喻。。。<img src="https://assets.xushier.cn/pic/HDDRecovery/DiskDrill%20%E6%89%AB%E6%8F%8F%E6%97%B6%E9%97%B4%E5%BE%88%E4%B9%85.png" alt="DiskDrill 扫描时间很久"><br>百度听说 <strong>WinHex</strong> 是最专业的，就试了试，但实在太过专业，操作难度太高。扫描一下分区，扫出了几百个，都超过上限了，而且不能看扫出来的分区里的内容，遂放弃。</p>
-<p>最终还是抱着试试看的态度用回了 RS，这次才发现 RS 的优点。</p>
-<ul>
-<li>RS 可以只<strong>扫描未分配空间</strong>，也是这个原因，扫描时间只要一晚，大概七个小时。因为大容量移动硬盘一般都是悲催的叠瓦盘，速度只有 50 到 80M 左右。如果是非叠瓦盘，速度应该还能提升一倍不止。<img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%89%AB%E6%8F%8F%E6%9C%AA%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4.png" alt="RS可以直接扫描未分配空间"></li>
-<li>RS 的扫描进度不只有百分比和扇区数，还可直接看到已经扫描了的多少 G 的容量。</li>
-<li>RS 扫描时产生一个<strong>块状图</strong>，不同颜色标记不同数据，可以直观看到每个数据块里都是什么内容。<img src="https://assets.xushier.cn/pic/HDDRecovery/R-Studio%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C.png" alt="RS扫描块状图"></li>
-<li>若硬盘容量大，扫描一次需要很久，如果电脑需要开关机或者拔插硬盘的话，<strong>保存扫描数据进度功能</strong>就派上用场了。RS 的扫描进度、进度恢复、数据恢复很快，用了很多次没有一次卡死的。<img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C.png" alt="RS扫描进度恢复"></li>
-<li>RS 扫描时几秒就能把 2T 数据里的目录整理出来，可以方便看到有哪些数据，但此时只是可以看到<strong>目录结构</strong>，恢复出来是不能用的，要扫描完成之后才可以恢复。这也是第一次用的时候没有恢复成功的原因。<img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C%E7%9B%AE%E5%BD%95.png" alt="RS扫描结果目录"></li>
-<li>RS 的扫描设置可以设置扫描哪种<strong>文件系统</strong>以及<strong>扫描视图</strong>等。 <img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE.png" alt="RS扫描设置"></li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对硬盘的大部分操作，基本用的都是 DG。现在看来，在 HFS 格式的数据恢复方面，RS 也很好用哇。当然，上述用的都是 PJ 版，若是付费购买的正版，其他几款也不一定差。</p>
-<p>现在我已经把恢复完后的 HFS 分区也格式化为了 NTFS 格式，还是通用的格式方便一点啊。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/%E7%9B%AE%E5%89%8D%E7%A1%AC%E7%9B%98%E7%8A%B6%E6%80%81.png" alt="目前硬盘状态"></p>
-]]></content>
-  </entry>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Mac HFS</title>
+      <link href="/2023/03/08/%E8%AF%84%E6%B5%8B/"/>
+      <url>/2023/03/08/%E8%AF%84%E6%B5%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Mac-HFS-格式移动硬盘数据恢复小记"><a href="#Mac-HFS-格式移动硬盘数据恢复小记" class="headerlink" title="Mac HFS 格式移动硬盘数据恢复小记"></a>Mac HFS 格式移动硬盘数据恢复小记</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前不久帮人装系统，因为系统镜像是在移动硬盘里，懒得往优盘拷贝了，于是直接把移动硬盘插到了待装系统的电脑上，想着配合硬盘里的 PE 直接就装了。</p><p>然而，插上去好好的可以读出数据，拔下来就不行了，再插上去还是不行，瞬间想骂人了！大姐姐的房子就这么没了？</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>具体情况是，插到电脑显示无法读取数据。打开 <strong>DiskGenius</strong> (以下简称 DG) ，发现原本的两个分区没有了，硬盘是未分配的状态。</p><p>东芝的 4T 移动硬盘，2T 为 NTFS 格式的 Windows 分区，2T 为 HFS 的 Mac 分区。</p><p>细细想了一下，操作上并没有删除数据，分区瞬间丢失，应该只是分区表丢失，导致引导不了分区，但数据都还在，只差一个<strong>药引子</strong>让数据显示出来，跟删除了数据还是略有不同的。</p><h2 id="NTFS-分区恢复"><a href="#NTFS-分区恢复" class="headerlink" title="NTFS 分区恢复"></a>NTFS 分区恢复</h2><p>用了 DG 的搜索分区功能，搜索出了 NTFS 分区，搜索有点慢，搜索出来后一秒恢复。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1%201.png" alt="NTFS 分区已找回，HFS分区丢失"><br><img src="https://assets.xushier.cn/pic/HDDRecovery/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1.png" alt="NTFS 分区已找回，HFS分区丢失"><br>这里有个技巧可以让搜索更快速，DG 的搜索分区是按柱面依次搜索，假如分了两个同样大小的分区，那么在总柱面数除以 2 得到的数的所在的小范围内搜索，就可以很快搜索到了。</p><p>简单说就是估计一下要搜索的分区大概是在哪个柱面范围内开始，从那里开始搜索就可以了。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/DG%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE.png" alt="DG 扫描设置"><br>比如 4T 硬盘，分了两个区，各 2T，在 DG 里看到总柱面数是 480000，那么第一个分区从零开始扫描马上就能扫到，扫描第二个分区时设置范围，范围大致是 240000±1000 ，也很快就能扫描到。当然前提是 DG 支持的格式，不支持的话是扫描不到的。</p><p>搜索到分区之后记得看下里面文件是否是你的文件，不是或者没有文件，可以忽略，继续扫描。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/DG%20%E6%89%AB%E6%8F%8F%E5%88%B0%E5%88%86%E5%8C%BA.png" alt="DG扫描到分区"><br>因为 DG 不支持对 HFS 格式分区进行搜索，于是乎，踏上了恢复 HFS 分区的漫漫长路。</p><h2 id="HFS-分区恢复"><a href="#HFS-分区恢复" class="headerlink" title="HFS 分区恢复"></a>HFS 分区恢复</h2><p>一开始想，这也不算是恢复数据，只是搜一下分区，还原一下，应该很快，估计要不了多少软妹币。于是找淘宝，标价 9.9，进去一问<strong>要价 480</strong>。怒而自力更生，找数据恢复软件。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/%E6%B7%98%E5%AE%9D%E8%A6%81%E4%BB%B7.jpg" alt="淘宝要价"><br>前面说的 DG，以及 R-Studio (以下简称 RS)、EasyRecovery 等是以前就见过的。但万能的 <strong>DG 此时却不支持 HFS 格式扫描</strong>，R-Studio 以前用过一次，依稀记得界面很垃圾并且貌似没有恢复成功。</p><p>是以首先尝试的是鼎鼎大名的 <strong>EasyRecovery</strong>。EasyRecovery 最新的 15 版用起来很不错，但是要收费的，找到了 14 版的 PJ 版，但扫描出来没有目录，远没有 15 版好用。</p><p>于是又找了几个数据恢复软件，有 <strong>Do Your Data Recovery、Disk Drill、EaseUS Data Recovery Wizard、Wondershare Recoverit</strong>，一一试用。<img src="https://assets.xushier.cn/pic/HDDRecovery/%E8%BD%AF%E4%BB%B6%E5%9B%BE%E6%A0%87.png" alt="软件图标"></p><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>Wondershare Recoverit 最垃圾，打开都要好一会儿，经常卡死，扫描不到未分配空间，界面好看有毛用。<img src="https://assets.xushier.cn/pic/HDDRecovery/recoverit%20%E5%8D%A1%E6%AD%BB.png" alt="recoverit 卡死"><br>Do Your Data Recovery、Disk Drill 和 EaseUS Data Recovery 的界面都较简约，也都<strong>不能扫描未分配空间</strong>，要扫描的话只能全盘扫描，花费很多时间。<img src="https://assets.xushier.cn/pic/HDDRecovery/DoYourData%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F.png" alt="DoYourData 只能全盘扫描"><br><img src="https://assets.xushier.cn/pic/HDDRecovery/EaseUS%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F.png" alt="EaseUS 只能全盘扫描"><br><img src="https://assets.xushier.cn/pic/HDDRecovery/DiskDrill%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F.png" alt="DiskDrill 只能全盘扫描"><br>Disk Drill 和 EaseUS Data Recovery 可以扫描出目录，但 <strong>Disk Drill 扫描时间巨长</strong>；</p><p>EaseUS Data Recovery 在 Macbook 上扫描几分钟就<strong>停止读取硬盘</strong>了，在 Windows 上扫描一会儿就卡死了。</p><p>花了几个小时，快要扫描完的时候停止读取硬盘或者卡死，不能保存扫描信息，想摔电脑的那种绝望，无法言喻。。。<img src="https://assets.xushier.cn/pic/HDDRecovery/DiskDrill%20%E6%89%AB%E6%8F%8F%E6%97%B6%E9%97%B4%E5%BE%88%E4%B9%85.png" alt="DiskDrill 扫描时间很久"><br>百度听说 <strong>WinHex</strong> 是最专业的，就试了试，但实在太过专业，操作难度太高。扫描一下分区，扫出了几百个，都超过上限了，而且不能看扫出来的分区里的内容，遂放弃。</p><p>最终还是抱着试试看的态度用回了 RS，这次才发现 RS 的优点。</p><ul><li>RS 可以只<strong>扫描未分配空间</strong>，也是这个原因，扫描时间只要一晚，大概七个小时。因为大容量移动硬盘一般都是悲催的叠瓦盘，速度只有 50 到 80M 左右。如果是非叠瓦盘，速度应该还能提升一倍不止。<img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%89%AB%E6%8F%8F%E6%9C%AA%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4.png" alt="RS可以直接扫描未分配空间"></li><li>RS 的扫描进度不只有百分比和扇区数，还可直接看到已经扫描了的多少 G 的容量。</li><li>RS 扫描时产生一个<strong>块状图</strong>，不同颜色标记不同数据，可以直观看到每个数据块里都是什么内容。<img src="https://assets.xushier.cn/pic/HDDRecovery/R-Studio%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C.png" alt="RS扫描块状图"></li><li>若硬盘容量大，扫描一次需要很久，如果电脑需要开关机或者拔插硬盘的话，<strong>保存扫描数据进度功能</strong>就派上用场了。RS 的扫描进度、进度恢复、数据恢复很快，用了很多次没有一次卡死的。<img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C.png" alt="RS扫描进度恢复"></li><li>RS 扫描时几秒就能把 2T 数据里的目录整理出来，可以方便看到有哪些数据，但此时只是可以看到<strong>目录结构</strong>，恢复出来是不能用的，要扫描完成之后才可以恢复。这也是第一次用的时候没有恢复成功的原因。<img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C%E7%9B%AE%E5%BD%95.png" alt="RS扫描结果目录"></li><li>RS 的扫描设置可以设置扫描哪种<strong>文件系统</strong>以及<strong>扫描视图</strong>等。 <img src="https://assets.xushier.cn/pic/HDDRecovery/RS%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE.png" alt="RS扫描设置"></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对硬盘的大部分操作，基本用的都是 DG。现在看来，在 HFS 格式的数据恢复方面，RS 也很好用哇。当然，上述用的都是 PJ 版，若是付费购买的正版，其他几款也不一定差。</p><p>现在我已经把恢复完后的 HFS 分区也格式化为了 NTFS 格式，还是通用的格式方便一点啊。<br><img src="https://assets.xushier.cn/pic/HDDRecovery/%E7%9B%AE%E5%89%8D%E7%A1%AC%E7%9B%98%E7%8A%B6%E6%80%81.png" alt="目前硬盘状态"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Untitled</title>
+      <link href="/2023/03/07/Untitled/"/>
+      <url>/2023/03/07/Untitled/</url>
+      
+        <content type="html"><![CDATA[<p>sdfsdgd 撒发射点发生<br>第三帝国</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/1970/01/01/hello-world/"/>
+      <url>/1970/01/01/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
