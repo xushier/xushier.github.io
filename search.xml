@@ -1,67 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Untitled</title>
-    <url>/2023/03/07/Untitled/</url>
-    <content><![CDATA[<p>sdfsdgd 撒发射点发生<br>第三帝国</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/1970/01/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Mac HFS 格式移动硬盘数据恢复小记</title>
-    <url>/2023/03/08/%E8%AF%84%E6%B5%8B/</url>
-    <content><![CDATA[<h1 id="Mac-HFS-格式移动硬盘数据恢复小记"><a href="#Mac-HFS-格式移动硬盘数据恢复小记" class="headerlink" title="Mac HFS 格式移动硬盘数据恢复小记"></a>Mac HFS 格式移动硬盘数据恢复小记</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前不久帮人装系统，因为系统镜像是在移动硬盘里，懒得往优盘拷贝了，于是直接把移动硬盘插到了待装系统的电脑上，想着配合硬盘里的 PE 直接就装了。</p>
-<p>然而，插上去好好的可以读出数据，拔下来就不行了，再插上去还是不行，瞬间想骂人了！大姐姐的房子就这么没了？<span id="more"></span></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>具体情况是，插到电脑显示无法读取数据。打开 <strong>DiskGenius</strong> (以下简称 DG) ，发现原本的两个分区没有了，硬盘是未分配的状态。</p>
-<p>东芝的 4T 移动硬盘，2T 为 NTFS 格式的 Windows 分区，2T 为 HFS 的 Mac 分区。</p>
-<p>细细想了一下，操作上并没有删除数据，分区瞬间丢失，应该只是分区表丢失，导致引导不了分区，但数据都还在，只差一个<strong>药引子</strong>让数据显示出来，跟删除了数据还是略有不同的。</p>
-<h2 id="NTFS-分区恢复"><a href="#NTFS-分区恢复" class="headerlink" title="NTFS 分区恢复"></a>NTFS 分区恢复</h2><p>用了 DG 的搜索分区功能，搜索出了 NTFS 分区，搜索有点慢，搜索出来后一秒恢复。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1-438f92.webp" alt="NTFS 分区已找回，HFS 分区丢失"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1%201-247120.webp" alt="NTFS 分区已找回，HFS 分区丢失 1"></p>
-<p>这里有个技巧可以让搜索更快速，DG 的搜索分区是按柱面依次搜索，假如分了两个同样大小的分区，那么在总柱面数除以 2 得到的数的所在的小范围内搜索，就可以很快搜索到了。</p>
-<p>简单说就是估计一下要搜索的分区大概是在哪个柱面范围内开始，从那里开始搜索就可以了。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DG%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE-af7544.webp" alt="DG 扫描设置"><br>比如 4T 硬盘，分了两个区，各 2T，在 DG 里看到总柱面数是 480000，那么第一个分区从零开始扫描马上就能扫到，扫描第二个分区时设置范围，范围大致是 240000±1000 ，也很快就能扫描到。当然前提是 DG 支持的格式，不支持的话是扫描不到的。</p>
-<p>搜索到分区之后记得看下里面文件是否是你的文件，不是或者没有文件，可以忽略，继续扫描。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DG%20%E6%89%AB%E6%8F%8F%E5%88%B0%E5%88%86%E5%8C%BA-e8366b.webp" alt="DG 扫描到分区"><br>因为 DG 不支持对 HFS 格式分区进行搜索，于是乎，踏上了恢复 HFS 分区的漫漫长路。</p>
-<h2 id="HFS-分区恢复"><a href="#HFS-分区恢复" class="headerlink" title="HFS 分区恢复"></a>HFS 分区恢复</h2><p>一开始想，这也不算是恢复数据，只是搜一下分区，还原一下，应该很快，估计要不了多少软妹币。于是找淘宝，标价 9.9，进去一问<strong>要价 480</strong>。怒而自力更生，找数据恢复软件。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/%E6%B7%98%E5%AE%9D%E8%A6%81%E4%BB%B7-a97a26.webp" alt="淘宝要价"><br>前面说的 DG，以及 R-Studio (以下简称 RS)、EasyRecovery 等是以前就见过的。但万能的 <strong>DG 此时却不支持 HFS 格式扫描</strong>，R-Studio 以前用过一次，依稀记得界面很垃圾并且貌似没有恢复成功。</p>
-<p>是以首先尝试的是鼎鼎大名的 <strong>EasyRecovery</strong>。EasyRecovery 最新的 15 版用起来很不错，但是要收费的，找到了 14 版的 PJ 版，但扫描出来没有目录，远没有 15 版好用。</p>
-<p>于是又找了几个数据恢复软件，有 <strong>Do Your Data Recovery、Disk Drill、EaseUS Data Recovery Wizard、Wondershare Recoverit</strong>，一一试用。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/%E8%BD%AF%E4%BB%B6%E5%9B%BE%E6%A0%87-f0f38d.webp" alt="软件图标"></p>
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>Wondershare Recoverit 最垃圾，打开都要好一会儿，经常卡死，扫描不到未分配空间，界面好看有毛用。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/recoverit%20%E5%8D%A1%E6%AD%BB-af1c2c.webp" alt="recoverit 卡死"><br>Do Your Data Recovery、Disk Drill 和 EaseUS Data Recovery 的界面都较简约，也都<strong>不能扫描未分配空间</strong>，要扫描的话只能全盘扫描，花费很多时间。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DoYourData%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F-0cee37.webp" alt="DoYourData 只能全盘扫描"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/EaseUS%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F-44eafe.webp" alt="EaseUS 只能全盘扫描"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DiskDrill%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F-de1cbc.webp" alt="DiskDrill 只能全盘扫描"><br>Disk Drill 和 EaseUS Data Recovery 可以扫描出目录，但 <strong>Disk Drill 扫描时间巨长</strong>；</p>
-<p>EaseUS Data Recovery 在 Macbook 上扫描几分钟就<strong>停止读取硬盘</strong>了，在 Windows 上扫描一会儿就卡死了。</p>
-<p>花了几个小时，快要扫描完的时候停止读取硬盘或者卡死，不能保存扫描信息，想摔电脑的那种绝望，无法言喻。。。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DiskDrill%20%E6%89%AB%E6%8F%8F%E6%97%B6%E9%97%B4%E5%BE%88%E4%B9%85-ac6586.webp" alt="DiskDrill 扫描时间很久"><br>百度听说 <strong>WinHex</strong> 是最专业的，就试了试，但实在太过专业，操作难度太高。扫描一下分区，扫出了几百个，都超过上限了，而且不能看扫出来的分区里的内容，遂放弃。</p>
-<p>最终还是抱着试试看的态度用回了 RS，这次才发现 RS 的优点。</p>
-<ul>
-<li>RS 可以只<strong>扫描未分配空间</strong>，也是这个原因，扫描时间只要一晚，大概七个小时。因为大容量移动硬盘一般都是悲催的叠瓦盘，速度只有 50 到 80M 左右。如果是非叠瓦盘，速度应该还能提升一倍不止。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%89%AB%E6%8F%8F%E6%9C%AA%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4-f1ab29.webp" alt="RS 可以直接扫描未分配空间"></li>
-<li>RS 的扫描进度不只有百分比和扇区数，还可直接看到已经扫描了的多少 G 的容量。</li>
-<li>RS 扫描时产生一个<strong>块状图</strong>，不同颜色标记不同数据，可以直观看到每个数据块里都是什么内容。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/R-Studio%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C-2f3666.webp" alt="R-Studio 扫描结果"></li>
-<li>若硬盘容量大，扫描一次需要很久，如果电脑需要开关机或者拔插硬盘的话，<strong>保存扫描数据进度功能</strong>就派上用场了。RS 的扫描进度、进度恢复、数据恢复很快，用了很多次没有一次卡死的。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C-a67a88.webp" alt="RS 扫描结果"></li>
-<li>RS 扫描时几秒就能把 2T 数据里的目录整理出来，可以方便看到有哪些数据，但此时只是可以看到<strong>目录结构</strong>，恢复出来是不能用的，要扫描完成之后才可以恢复。这也是第一次用的时候没有恢复成功的原因。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C%E7%9B%AE%E5%BD%95-dc5008.webp" alt="RS 扫描结果目录"></li>
-<li>RS 的扫描设置可以设置扫描哪种<strong>文件系统</strong>以及<strong>扫描视图</strong>等。 <img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE-220093.webp" alt="RS 扫描设置"></li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对硬盘的大部分操作，基本用的都是 DG。现在看来，在 HFS 格式的数据恢复方面，RS 也很好用哇。当然，上述用的都是 PJ 版，若是付费购买的正版，其他几款也不一定差。</p>
-<p>现在我已经把恢复完后的 HFS 分区也格式化为了 NTFS 格式，还是通用的格式方便一点啊。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/%E7%9B%AE%E5%89%8D%E7%A1%AC%E7%9B%98%E7%8A%B6%E6%80%81-e8e7aa.webp" alt="目前硬盘状态"></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Mac HFS 格式移动硬盘数据恢复小记</title>
+      <link href="/2023/03/08/Mac%20HFS%20%E6%A0%BC%E5%BC%8F%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B0%8F%E8%AE%B0/"/>
+      <url>/2023/03/08/Mac%20HFS%20%E6%A0%BC%E5%BC%8F%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B0%8F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前不久帮人装系统，因为系统镜像是在移动硬盘里，懒得往优盘拷贝了，于是直接把移动硬盘插到了待装系统的电脑上，想着配合硬盘里的 PE 直接就装了。</p><p>然而，插上去好好的可以读出数据，拔下来就不行了，再插上去还是不行，瞬间想骂人了！大姐姐的房子就这么没了？</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>具体情况是，插到电脑显示无法读取数据。打开 <strong>DiskGenius</strong> (以下简称 DG) ，发现原本的两个分区没有了，硬盘是未分配的状态。</p><p>东芝的 4T 移动硬盘，2T 为 NTFS 格式的 Windows 分区，2T 为 HFS 的 Mac 分区。</p><p>细细想了一下，操作上并没有删除数据，分区瞬间丢失，应该只是分区表丢失，导致引导不了分区，但数据都还在，只差一个<strong>药引子</strong>让数据显示出来，跟删除了数据还是略有不同的。</p><h2 id="NTFS-分区恢复"><a href="#NTFS-分区恢复" class="headerlink" title="NTFS 分区恢复"></a>NTFS 分区恢复</h2><p>用了 DG 的搜索分区功能，搜索出了 NTFS 分区，搜索有点慢，搜索出来后一秒恢复。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1-438f92.webp" alt="NTFS 分区已找回，HFS 分区丢失"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/NTFS%20%E5%88%86%E5%8C%BA%E5%B7%B2%E6%89%BE%E5%9B%9E%EF%BC%8CHFS%20%E5%88%86%E5%8C%BA%E4%B8%A2%E5%A4%B1%201-247120.webp" alt="NTFS 分区已找回，HFS 分区丢失 1"></p><p>这里有个技巧可以让搜索更快速，DG 的搜索分区是按柱面依次搜索，假如分了两个同样大小的分区，那么在总柱面数除以 2 得到的数的所在的小范围内搜索，就可以很快搜索到了。</p><p>简单说就是估计一下要搜索的分区大概是在哪个柱面范围内开始，从那里开始搜索就可以了。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DG%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE-af7544.webp" alt="DG 扫描设置"><br>比如 4T 硬盘，分了两个区，各 2T，在 DG 里看到总柱面数是 480000，那么第一个分区从零开始扫描马上就能扫到，扫描第二个分区时设置范围，范围大致是 240000±1000 ，也很快就能扫描到。当然前提是 DG 支持的格式，不支持的话是扫描不到的。</p><p>搜索到分区之后记得看下里面文件是否是你的文件，不是或者没有文件，可以忽略，继续扫描。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DG%20%E6%89%AB%E6%8F%8F%E5%88%B0%E5%88%86%E5%8C%BA-e8366b.webp" alt="DG 扫描到分区"><br>因为 DG 不支持对 HFS 格式分区进行搜索，于是乎，踏上了恢复 HFS 分区的漫漫长路。</p><h2 id="HFS-分区恢复"><a href="#HFS-分区恢复" class="headerlink" title="HFS 分区恢复"></a>HFS 分区恢复</h2><p>一开始想，这也不算是恢复数据，只是搜一下分区，还原一下，应该很快，估计要不了多少软妹币。于是找淘宝，标价 9.9，进去一问<strong>要价 480</strong>。怒而自力更生，找数据恢复软件。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/%E6%B7%98%E5%AE%9D%E8%A6%81%E4%BB%B7-a97a26.webp" alt="淘宝要价"><br>前面说的 DG，以及 R-Studio (以下简称 RS)、EasyRecovery 等是以前就见过的。但万能的 <strong>DG 此时却不支持 HFS 格式扫描</strong>，R-Studio 以前用过一次，依稀记得界面很垃圾并且貌似没有恢复成功。</p><p>是以首先尝试的是鼎鼎大名的 <strong>EasyRecovery</strong>。EasyRecovery 最新的 15 版用起来很不错，但是要收费的，找到了 14 版的 PJ 版，但扫描出来没有目录，远没有 15 版好用。</p><p>于是又找了几个数据恢复软件，有 <strong>Do Your Data Recovery、Disk Drill、EaseUS Data Recovery Wizard、Wondershare Recoverit</strong>，一一试用。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/%E8%BD%AF%E4%BB%B6%E5%9B%BE%E6%A0%87-f0f38d.webp" alt="软件图标"></p><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>Wondershare Recoverit 最垃圾，打开都要好一会儿，经常卡死，扫描不到未分配空间，界面好看有毛用。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/recoverit%20%E5%8D%A1%E6%AD%BB-af1c2c.webp" alt="recoverit 卡死"><br>Do Your Data Recovery、Disk Drill 和 EaseUS Data Recovery 的界面都较简约，也都<strong>不能扫描未分配空间</strong>，要扫描的话只能全盘扫描，花费很多时间。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DoYourData%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F-0cee37.webp" alt="DoYourData 只能全盘扫描"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/EaseUS%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F-44eafe.webp" alt="EaseUS 只能全盘扫描"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DiskDrill%20%E5%8F%AA%E8%83%BD%E5%85%A8%E7%9B%98%E6%89%AB%E6%8F%8F-de1cbc.webp" alt="DiskDrill 只能全盘扫描"><br>Disk Drill 和 EaseUS Data Recovery 可以扫描出目录，但 <strong>Disk Drill 扫描时间巨长</strong>；</p><p>EaseUS Data Recovery 在 Macbook 上扫描几分钟就<strong>停止读取硬盘</strong>了，在 Windows 上扫描一会儿就卡死了。</p><p>花了几个小时，快要扫描完的时候停止读取硬盘或者卡死，不能保存扫描信息，想摔电脑的那种绝望，无法言喻。。。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/DiskDrill%20%E6%89%AB%E6%8F%8F%E6%97%B6%E9%97%B4%E5%BE%88%E4%B9%85-ac6586.webp" alt="DiskDrill 扫描时间很久"><br>百度听说 <strong>WinHex</strong> 是最专业的，就试了试，但实在太过专业，操作难度太高。扫描一下分区，扫出了几百个，都超过上限了，而且不能看扫出来的分区里的内容，遂放弃。</p><p>最终还是抱着试试看的态度用回了 RS，这次才发现 RS 的优点。</p><ul><li>RS 可以只<strong>扫描未分配空间</strong>，也是这个原因，扫描时间只要一晚，大概七个小时。因为大容量移动硬盘一般都是悲催的叠瓦盘，速度只有 50 到 80M 左右。如果是非叠瓦盘，速度应该还能提升一倍不止。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%89%AB%E6%8F%8F%E6%9C%AA%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4-f1ab29.webp" alt="RS 可以直接扫描未分配空间"></li><li>RS 的扫描进度不只有百分比和扇区数，还可直接看到已经扫描了的多少 G 的容量。</li><li>RS 扫描时产生一个<strong>块状图</strong>，不同颜色标记不同数据，可以直观看到每个数据块里都是什么内容。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/R-Studio%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C-2f3666.webp" alt="R-Studio 扫描结果"></li><li>若硬盘容量大，扫描一次需要很久，如果电脑需要开关机或者拔插硬盘的话，<strong>保存扫描数据进度功能</strong>就派上用场了。RS 的扫描进度、进度恢复、数据恢复很快，用了很多次没有一次卡死的。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C-a67a88.webp" alt="RS 扫描结果"></li><li>RS 扫描时几秒就能把 2T 数据里的目录整理出来，可以方便看到有哪些数据，但此时只是可以看到<strong>目录结构</strong>，恢复出来是不能用的，要扫描完成之后才可以恢复。这也是第一次用的时候没有恢复成功的原因。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C%E7%9B%AE%E5%BD%95-dc5008.webp" alt="RS 扫描结果目录"></li><li>RS 的扫描设置可以设置扫描哪种<strong>文件系统</strong>以及<strong>扫描视图</strong>等。 <img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/RS%20%E6%89%AB%E6%8F%8F%E8%AE%BE%E7%BD%AE-220093.webp" alt="RS 扫描设置"></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对硬盘的大部分操作，基本用的都是 DG。现在看来，在 HFS 格式的数据恢复方面，RS 也很好用哇。当然，上述用的都是 PJ 版，若是付费购买的正版，其他几款也不一定差。</p><p>现在我已经把恢复完后的 HFS 分区也格式化为了 NTFS 格式，还是通用的格式方便一点啊。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-22/%E7%9B%AE%E5%89%8D%E7%A1%AC%E7%9B%98%E7%8A%B6%E6%80%81-e8e7aa.webp" alt="目前硬盘状态"></p>]]></content>
+      
+      
       <categories>
-        <category>软件</category>
-        <category>数据恢复</category>
+          
+          <category> 软件 </category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>数据恢复</tag>
-        <tag>硬盘</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> HFS </tag>
+            
+            <tag> 数据恢复 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>KPW 4 与 KPW 3 不完全对比</title>
+      <link href="/2020/05/05/KPW3%20%E4%B8%8E%20KPW4%20%E4%B8%8D%E5%AE%8C%E5%85%A8%E5%AF%B9%E6%AF%94/"/>
+      <url>/2020/05/05/KPW3%20%E4%B8%8E%20KPW4%20%E4%B8%8D%E5%AE%8C%E5%85%A8%E5%AF%B9%E6%AF%94/</url>
+      
+        <content type="html"><![CDATA[<p>今年 4 月份入了多多神价，589 的 kpw4 。</p><p>用了一段时间，感觉屏幕看起来跟朋友用的 3 代有点不一样，总是感觉屏幕模模糊糊，凑近点看又没什么毛病。强迫症心里很不舒服，于是借了个 kpw3 ，摘了眼镜细细瞧了一遍。</p><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><h3 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h3><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%A4%96%E8%A7%82%20-%20ff3f4.jpg" alt="外观"></p><p><em>4 代</em>：机身背面的 Amazon 的 <strong>Logo 更小一些</strong>，屏幕下方的 Kindle Logo 颜色是和 1、2 代一样的<strong>白色</strong>。</p><p><em>3 代</em>：屏幕下方的 Kindle Logo 是<strong>抛光</strong>的，在特定角度下通过反光可以看到。</p><p><em>结论</em>：3 代抛光 logo 低调且能更少的影响阅读。</p><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%8E%A5%E5%8F%A3%20-%2001a5e.jpg" alt="接口"></p><p><em>4 代</em>：MicroUSB 充电接口，指示灯与外壳平齐，开孔是圆形，按键手感<strong>较轻</strong>。充电接口外壳开孔是和 MicroUSB 一样的圆梯形。</p><p><em>3 代</em>：MicroUSB 充电接口，指示灯隐藏的比较深，开孔是长条状，按键手感<strong>偏硬</strong>。充电接口外壳开孔是矩形，充电指示灯颜色稍有不同。</p><p><em>结论</em>：4 代充电接口和外壳开孔一致，<strong>缝隙更小</strong>，指示灯与外壳平齐，应该都是为防尘防水所做的改变。但指示灯较外露，相比 3 代，在晚上充电的时候光污染也会稍严重。</p><h3 id="侧边"><a href="#侧边" class="headerlink" title="侧边"></a>侧边</h3><p><em>4 代</em>：<strong>机身更轻</strong>，边框与背部一体，<strong>整体圆润</strong>。边框与正面之间通过一片凸起的软夹层（类似橡皮圈）相接，内置磁吸。</p><p><em>3 代</em>：<strong>机身稍重</strong>，边框与背部一体，边框部分有棱角，<strong>整体方正</strong>。边框正面之间是斜面连接。接口按键部分相对于侧边其他部分是凸起的，边缘通过弧边过度。</p><p><em>结论</em>：将屏幕朝下放在桌面时，4 代边框与正面的凸起软夹层可以使桌面与屏幕之间有一层空隙，从而<strong>保护屏幕</strong>。<br>4 代侧边圆润，手感好，相比之下 3 代就有些硌手了，但 3 代边框的棱条给人一种厚实有质感的感觉，实际也确实是 3 代重很多。</p><h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%A2%9C%E8%89%B2%E5%8F%8D%E8%BD%AC%20-%20baeb8.jpg" alt="颜色反转"></p><p>系统都是最新版本，功能上，相比 3 代，4 代多了<strong>颜色反转、省电模式</strong>功能，且因为支持蓝牙，增加了 <strong>Audible 商店</strong>选项。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AD%97%E4%BD%93%20-%20134cc.jpg" alt="字体"></p><p>可以<strong>添加自定义字体</strong>，之前用 KPW2 的时候貌似是不行的，应该是早就支持的，只是许久没用了。把字体文件拖到字体文件夹即可，这个 KPW3 和 KPW4 都是可以的。</p><p><em>结论</em>：</p><ul><li><strong>颜色反转</strong>功能在夜间使用不会那么刺眼，算是挺实用的功能，但反转后字体清晰度会降低；</li><li><strong>省电模式</strong>开启后唤醒会很慢，但确实会增加一些续航；</li><li><strong>蓝牙功能</strong>设置好后，触摸屏幕会有声音反馈，对视力障碍人士很友好，除此之外，可以用来听有声电子书，但只限英文书。</li></ul><h3 id="屏幕"><a href="#屏幕" class="headerlink" title="屏幕"></a>屏幕</h3><p>4 代改为纯平屏幕，触摸层与屏幕层之间是有空隙的，触摸层更<strong>光滑</strong>，多了一颗背光灯。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%A4%9C%E9%97%B4%E5%8D%8A%E4%BA%AE%E5%BA%A6%20-%209eed3.jpg" alt="夜间半亮度"></p><p>低亮度下相较于 3 代，4 代背光<strong>偏暖</strong>，而高亮度下偏冷，但也有人测试的是 4 代偏冷。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%A4%9C%E9%97%B4%E9%AB%98%E4%BA%AE%E5%BA%A6%20-%20f8bb2.jpg" alt="夜间高亮度"></p><p>题主近视将近一千度，关闭背光，同一情况下（同文档同字体设置），总是感觉 3 代更清晰一点，4 代好像是屏幕上面那层玻璃透光性不好，滤掉了一些光似的，所以感觉特别暗，看起来有一点青绿色。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/3%E5%8F%8D%E5%85%89%20-%2031af5.jpg" alt="3反光"></p><p>但是摘了眼镜仔细近点看，又没有什么区别。晚上开背光的时候，摘掉眼镜近点看，会发现 3 代的字体边缘很锐利，以至于有锯齿，4 代可能是因为屏幕多的一层过滤掉了一些细节，字体边缘倒是挺光滑。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/4%E5%8F%8D%E5%85%89%20-%2076ff4.jpg" alt="4反光"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%8F%8D%E5%85%89%E5%AF%B9%E6%AF%94%20-%204aac6.jpg" alt="反光对比"></p><p>(<em>PS</em>：光源位置在一侧，照片与实际看到的并不完全相符，误差较大，仅供参考。)</p><p><em>结论</em>：4 代屏幕的优点是<strong>不会积灰、更加防水、背光均匀</strong>，缺点是<strong>反光稍严重、失去了纸张的粗糙触感、清晰度稍有降低</strong>。至于亮度及色温，见仁见智吧。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>简单来说，</p><p><em>4 代相比 3 代</em>：背光更均匀；系统更实用；握持手感好；屏幕不积灰；泡面不洇水。</p><p><em>3 代相比 4 代</em>可能也只在屏幕清晰度上有些许优势了。</p><p>So，还是 <em>4 代</em>更香一点。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开箱简评 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电纸书 </tag>
+            
+            <tag> Kindle </tag>
+            
+            <tag> kpw3 </tag>
+            
+            <tag> kpw4 </tag>
+            
+            <tag> 开箱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>先锋 DLD-D15 落地扇开箱简评</title>
+      <link href="/2020/05/05/%E5%85%88%E9%94%8B%20DLD-D15%20%E8%90%BD%E5%9C%B0%E6%89%87%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/"/>
+      <url>/2020/05/05/%E5%85%88%E9%94%8B%20DLD-D15%20%E8%90%BD%E5%9C%B0%E6%89%87%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/</url>
+      
+        <content type="html"><![CDATA[<p>最近天气太热了，准备买个风扇。  </p><p>比较喜欢小米带电池那款，不带电池那款也不错，但是太贵了。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%B1%B3%E5%AE%B6%E7%9B%B4%E6%B5%81%E5%8F%98%E9%A2%91%E8%90%BD%E5%9C%B0%E6%89%87%201X%20-%20a95ca.jpg" alt="米家直流变频落地扇 1X"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%B1%B3%E5%AE%B6%E7%9B%B4%E6%B5%81%E5%8F%98%E9%A2%91%E8%90%BD%E5%9C%B0%E6%89%87%202%20%E7%94%B5%E6%B1%A0%E7%89%88%20-%20af156.jpg" alt="米家直流变频落地扇 2 电池版"><br>因为是临时用一下，所以不需要太好的，只要带遥控就 ok。  </p><p>看艾美特评价比较好，有一款 129 还可以，然而是机械款，就 pass 了。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%89%BE%E7%BE%8E%E7%89%B9129%20-%20426f5.jpg" alt="艾美特129"><br>又看到先锋一款，天猫苏宁易购聚划算到手 99，带遥控，有点心动，到京东一看也是 99，且送电机十年质保。立刻下单，京豆抵扣之后到手 89。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%AE%A2%E5%8D%95%E9%A1%B5%E9%9D%A2%20-%20af460.jpg" alt="订单页面"></p><h1 id="组装"><a href="#组装" class="headerlink" title="组装"></a>组装</h1><p>快递隔天到，包装是纸箱，和一般笔记本电脑的快递盒差不多大。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%BA%B8%E7%AE%B1%E5%8C%85%E8%A3%85%20-%204e65c.jpg" alt="纸箱包装"><br>所有零件：说明书、网罩螺丝、遥控器、底盘、弯头螺杆、立柱、机身、前后网罩、扇叶、扇叶固定螺母。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%89%80%E6%9C%89%E9%9B%B6%E4%BB%B6%20-%2087b2c.jpg" alt="所有零件"></p><ol><li>拆掉立柱上的弯头螺杆，将立柱和底盘连接固定；<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%BA%95%E5%BA%A7%E8%9E%BA%E4%B8%9D%20-%20c0045.jpg" alt="底座螺丝"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%9B%BA%E5%AE%9A%E5%BA%95%E5%BA%A7%20-%2093ae6.jpg" alt="固定底座"></li><li>将后网罩对准电机外壳上的卡口，往上推卡紧，用扇叶固定螺母固定扇叶；<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B9%9D%E5%8F%B6%E6%89%87%E5%8F%B6%20-%20250da.jpg" alt="九叶扇叶"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%9B%BA%E5%AE%9A%E6%89%87%E5%8F%B6%20-%200138b.jpg" alt="固定扇叶"></li><li>对准网罩上方卡口并卡紧，网罩螺丝对准网罩下方孔，拧紧即可；<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%89%8D%E6%A1%86%E5%8D%A1%E6%89%A3%20-%2075928.jpg" alt="前框卡扣"><br><img src="https://assets.xushier.cn/pic/fan/%E7%BD%91%E7%BD%A9%E8%9E%BA%E4%B8%9D.jpg" alt="网罩螺丝"></li><li>组装完毕。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%95%B4%E6%9C%BA%E4%B8%80%E8%A7%88%20-%204161f.jpg" alt="整机一览"></li></ol><h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><h2 id="定时"><a href="#定时" class="headerlink" title="定时"></a>定时</h2><p>最多 7 小时定时。  </p><p>从机身可以看出定时时间是组合形式的，由 1h、2h、4h 组合，所以最长时间是 1+2+4 共 7 小时。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AE%98%E6%96%B9%E6%8C%89%E9%94%AE%20-%209e88c.jpg" alt="官方按键"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%9C%BA%E8%BA%AB%E6%8C%89%E9%94%AE%20-%203af70.jpg" alt="机身按键"></p><h2 id="摇头"><a href="#摇头" class="headerlink" title="摇头"></a>摇头</h2><p>摇头角度最大大概 90 度，与官方宣传一致。上下角度需要螺丝刀调节。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AE%98%E6%96%B9%E8%A7%92%E5%BA%A6%20-%2046241.jpg" alt="官方角度"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%88%9D%E5%A7%8B%E8%A7%92%E5%BA%A6%20-%206b604.jpg" alt="初始角度"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%9C%80%E7%BB%88%E8%A7%92%E5%BA%A6%20-%20cc667.jpg" alt="最终角度"></p><h2 id="遥控"><a href="#遥控" class="headerlink" title="遥控"></a>遥控</h2><p>机身、遥控器、手机遥控器功能一致，都是四个功能。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%87%AA%E5%B8%A6%E9%81%A5%E6%8E%A7%20-%2017cc5.jpg" alt="自带遥控"><br>风速和风类是一样的。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%89%8B%E6%9C%BA%E9%81%A5%E6%8E%A7%20-%20491b8.jpg" alt="手机遥控"></p><h1 id="使用体验"><a href="#使用体验" class="headerlink" title="使用体验"></a>使用体验</h1><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AE%98%E6%96%B9%E5%88%86%E8%B4%9D%E5%80%BC%20-%20e47dc.jpg" alt="官方分贝值"><br>手机下载噪音测试 APP，手机放在网罩下方，关窗状态下测试，各档噪音如下所示。  </p><p>关闭状态，24 分贝。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%9D%99%E6%AD%A2%E5%99%AA%E9%9F%B3%20-%20a2284.jpg" alt="静止噪音"><br>一到三档噪音分别为 40、46、49 分贝。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%80%E6%8C%A1%E5%99%AA%E9%9F%B3%20-%20ae0ba.jpg" alt="一挡噪音"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%BA%8C%E6%8C%A1%E5%99%AA%E9%9F%B3%20-%20df5e2.jpg" alt="二挡噪音"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%89%E6%A1%A3%E5%99%AA%E9%9F%B3%20-%20ca2ba.jpg" alt="三档噪音"><br>可以看到一档和三档与官方数据相差较大，当然，手机测试，误差较大，结果仅供参考。  </p><p>风扇和床大概一米五远，床是常见的 0.9 米的上下铺，床面大概有风扇一半高。  </p><p>在此情况下，大部分用的一档，噪音较小，晚上睡觉比较合适，但白天感觉风速稍小，二档尚可，三档风扇啸叫噪音太大。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AE%98%E6%96%B9%E5%8F%82%E6%95%B0%20-%205a349.jpg" alt="官方参数"><br>遥控器和手机都不能显示定时时长，所以定时全靠猜，要记住按下了几次，或者观察电机头部定时时长的指示灯。  </p><p>风扇功率是 40W，官方显示是一级能效。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%80%E7%BA%A7%E8%83%BD%E6%95%88%20-%20e6c07.jpg" alt="一级能效"><br>高度值参考实拍图和簸箕的比较。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%AB%98%E5%BA%A6%E5%8F%82%E8%80%83%20-%206725f.jpg" alt="高度参考"></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不足之处：</p><ul><li>噪音稍大</li><li>定时时间短，且定时时间需意会</li><li>上下角度调节范围稍小且需要螺丝刀来调节</li><li>高度太低</li></ul><p>总之，十年质保，有遥控，89 块钱虽然性价比不是最高，但也可以了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开箱简评 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开箱 </tag>
+            
+            <tag> 风扇 </tag>
+            
+            <tag> 落地扇 </tag>
+            
+            <tag> 先锋 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>雷迪司 H1000M UPS 开箱及使用</title>
+      <link href="/2020/04/04/%E9%9B%B7%E8%BF%AA%E5%8F%B8%20H1000M%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84%E5%8F%8A%E8%AE%BE%E7%BD%AE%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/04/04/%E9%9B%B7%E8%BF%AA%E5%8F%B8%20H1000M%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84%E5%8F%8A%E8%AE%BE%E7%BD%AE%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>一月份（2020）配了台 Nas，本文为该 Nas 系列篇三 —— <strong>雷迪斯 H1000M UPS 开箱及使用</strong>。关于该 Nas 后面会有文章详细介绍。</p><ul><li>篇一：乔思伯 V4 机箱选购历程及开箱简评。</li><li>篇二：海韵 Focus GX550 80Plus 金牌全模电源开箱。</li></ul><p>Nas 组装好运行了几天后，看了好多网友的 Nas 停电经历，愈发担心小姐姐们的家，于是买了这款 UPS，使用半年多了。目前为止，还算满意。</p><h2 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h2><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%9B%B7%E8%BF%AA%E5%8F%B8%E8%AE%A2%E5%8D%95%20-%204da0e.webp" alt="雷迪司订单"></p><p>型号是雷迪司 H1000M ，可带机 30 分钟款，保价 20，实际到手 249。</p><h2 id="开箱"><a href="#开箱" class="headerlink" title="开箱"></a>开箱</h2><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%A4%96%E5%8C%85%E8%A3%85%20-%207b0ef.webp" alt="外包装"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%BC%80%E7%AE%B1%20-%209b4e9.webp" alt="开箱"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%89%80%E6%9C%89%E9%85%8D%E4%BB%B6%20-%20022a2.webp" alt="所有配件"></p><p>配件只有一根通讯线。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%BB%E6%9C%BA%20-%206bb1d.webp" alt="主机"></p><p>主机，特别重，中部两侧和上方有散热缝隙。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%A1%B6%E9%83%A8%E6%A0%87%E7%AD%BE%20-%20a1514.webp" alt="顶部标签"></p><p>顶部的标签。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%AD%A3%E9%9D%A2%20-%20196b5.webp" alt="正面"></p><p>正面是一个屏幕以及开关机按键。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%83%8C%E9%9D%A2%E6%8F%92%E5%BA%A7%20-%2067470.webp" alt="背面插座"></p><p>后面是四个三孔插座和一个通讯口，以及一个重置按键。</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="基本连接使用"><a href="#基本连接使用" class="headerlink" title="基本连接使用"></a>基本连接使用</h3><p>UPS 连接电源，理论上 4 个插座口需要用 3 个，分别是 <strong>Nas 主机、软路由以及光猫</strong>，这样可以保证断电时 Nas 和软路由仍然能够与外界通讯，以便通知断电信息。</p><p>但软路由和光猫都是两脚插头，不能接 UPS。所以用了一个<strong>三脚插排接 UPS</strong>，用作 AP 的路由也顺便能接入了。</p><p>通讯口接到 Nas 上的 USB 口，以便查看 UPS 的电压电流等状态信息，最重要的是实现<strong>断电通知关机</strong>。</p><h3 id="配套软件安装使用"><a href="#配套软件安装使用" class="headerlink" title="配套软件安装使用"></a>配套软件安装使用</h3><p>该 UPS 附带控制软件，名为 <strong>ViewPower</strong>，支持 Win、Mac、Linux 平台。安装后在浏览器打开地址可查看 <strong>UPS 状态、配置安全策略、短信通知、开关机策略</strong>等功能。</p><ul><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%20-%20a2708.webp" alt="软件下载"><br>本 Nas 用的 Unraid 系统属于 Linux，下载 Linux 64 位文本界面。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%20-%201748c.webp" alt="下载链接"><br>复制下载链接。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%8B%E8%BD%BD%E8%A7%A3%E5%8E%8B%20-%20be138.webp" alt="下载解压"><br>打开命令行下载：<code>wget http://www.ladis.com.cn/down/installLADIS_Linux_text_x86_64.tar.gz解压：tar -zxf 文件</code></p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AE%89%E8%A3%85%20-%2014854.webp" alt="安装"><br>安装：<code>./文件名.bin </code>，如果选择默认安装位置，一路按回车即可。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%94%B5%E5%8A%9B%E6%B5%81%20-%2083e20.webp" alt="电力流"><br>安装完成后，打开地址：<code>http://[NAS 本地 IP]:15178/viewpower</code>，即可看到如上图所示的<strong>电力流</strong>。在右上角可将语言改为简体中文，默认管理员登录密码为 <strong>administrator</strong>，登录后可修改密码。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%B4%9F%E8%BD%BD%E5%85%B3%E6%9C%BA%20-%206b665.webp" alt="负载关机"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%BF%9C%E7%A8%8B%E8%B4%9F%E8%BD%BD%E5%85%B3%E6%9C%BA%20-%204cb67.webp" alt="远程负载关机"><br>负载关机和远程负载关机，感觉描述的很迷，看不懂。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%80%9A%E7%9F%A5%E8%AE%BE%E7%BD%AE%20-%2057db5.webp" alt="通知设置"><br>有邮件通知和<strong>短信通知</strong>，感觉最实用的也就是短信通知了，根据视频设置参数后测试可用。</p></li></ul><h3 id="配套软件使用体验"><a href="#配套软件使用体验" class="headerlink" title="配套软件使用体验"></a>配套软件使用体验</h3><p>虽然官方配套软件，但 Unraid 系统运行在优盘，该软件安装到系统，虽安装后可正常使用，但重启后相关安装文件被清除，要使用只能<strong>重新安装</strong>。</p><p>当然，可以搭配 <strong>user scripts</strong> 来进行开机自动安装，但安装后还需要重新进行配置，并没有实际解决问题。</p><p>尝试在 Linux 虚拟机里安装该软件，但直通 USB 控制器后也<strong>检测不到 USB 信号</strong>；又尝试<strong>拆包</strong>整合 Unraid 系统，但貌似是因为安装了 Java 的原因还是不行；遂放弃。</p><p>在咨询客服后得到的答复是，断电时需要手动进入软件关机。如果真是这样，那这个软件以及 UPS 就没有什么存在和使用的必要了，显然不可能，所以客服应该也是不懂。</p><p>这么多破事，还用个 {屁 | diǎo}。</p><h3 id="Unraid-Nut-插件使用"><a href="#Unraid-Nut-插件使用" class="headerlink" title="Unraid Nut 插件使用"></a>Unraid Nut 插件使用</h3><p>放弃自带软件后，转用 Unraid 应用商店的 <strong>Nut 插件</strong>。</p><ul><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%20-%2043464.webp" alt="插件安装"><br>傻瓜式安装，确保<strong>设置过 GitHub 相关代理且时间正确，或者有国外网络环境</strong>，在 APPS 里搜索 Nut，搜索结果第一个就是，点击下载图标即可。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/NUT%20%E8%AE%BE%E7%BD%AE%20-%2050b66.webp" alt="NUT 设置"><br>第一项默认为 No，设为 Yes，保存，点击 <strong>AutoDetect</strong> 即可检测到 UPS 信号。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/NUT%E6%95%B0%E6%8D%AE%20-%2083ae5.webp" alt="NUT数据"><br>上一步设置完成并检测到信号之后，就可看到如上图的 <strong>NUT Details</strong> 即 UPS 的相关电压电流参数了。此时，网页界面最下方大概中间位置处会有一个<strong>电池图标和电量显示</strong>。</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%A6%96%E9%A1%B5%E7%94%B5%E9%87%8F%E6%98%BE%E7%A4%BA%20-%20a5e7c.webp" alt="首页电量显示"><br>Unraid 的 DashBoard 界面也会多出一个 <strong>Power 板块</strong>，如图所示，显示 UPS 的状态、电量、负载及功耗。</p></li></ul><h3 id="断电上电流程"><a href="#断电上电流程" class="headerlink" title="断电上电流程"></a>断电上电流程</h3><p>断电时，UPS 屏幕亮，并伴随间断的 “滴” 声，路由及光猫都是 UPS 供电，所以此时 Nas 还是联网的，Nas 系统给设定好的服务<strong>发送通知</strong>，之后在设定的时间内关机，关机后 UPS 也<strong>自动关机</strong>，屏幕熄灭，“滴” 声停止。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%A7%A6%E6%91%B8%E5%B1%8F-1680146957446-27%20-%200e912.webp" alt="触摸屏"></p><p>来电时，UPS “滴” 一声，屏幕会亮一会儿，光猫启动，软路由通电自启，Nas 通电自启。<br><br>PS：“滴” 声可通过自带软件关闭。</p><h3 id="事件通知"><a href="#事件通知" class="headerlink" title="事件通知"></a>事件通知</h3><p>因为停电时需要<strong>手动暂停 QB 任务</strong>来和平关闭，防止来电时出现大批量的校验甚至文件丢失，且停电时只有几分钟的时间操作，所以停电时需要有<strong>强提醒</strong>，来保证停电时可以收到消息并看到，来决定在系统自动关机时是否需要进系统进行一些操作。</p><p>但是邮件提醒只能算作辅助提醒，除了电话最好的强提醒应该就是<strong>短信提醒</strong>了。配套软件有免费短信提醒，这也是为什么花那么大精力想去用配套软件。</p><p>但既然配套软件不好用，那就只能曲线救国了。偶然看到 139 邮箱发的短信，在度娘搜索后得知 139 邮箱每月有不少<strong>免费短信额度</strong>。于是，嘿嘿，我有一个计划。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%80%9A%E7%9F%A5%E8%AE%BE%E7%BD%AE-1680146970343-29%20-%20f3487.webp" alt="通知设置"></p><p>说干就干，Unraid 自带事件通知功能，如图所示，可设置通知的事件及等级等参数。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E8%AE%BE%E7%BD%AE%20-%2083e46.webp" alt="邮件通知设置"></p><p>在此处设置邮箱通知，需要一个发件邮箱（A）和一个<strong>收件邮箱</strong>（B），<strong>收件邮箱为 139 邮箱</strong>。</p><p>系统产生通知后，通过 A 邮箱将消息发送给 B 邮箱，B 邮箱通过短信将消息发送给 139 邮箱注册的手机。（139 邮箱需设置收到 A 邮箱的邮件自动短信通知手机）。</p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%BA%8B%E4%BB%B6%E9%80%9A%E7%9F%A5%20-%20d6360.webp" alt="事件通知"></p><p>Unraid 还有很多手机<strong>客户端</strong>可以进行事件通知，配置较简单。但这些 APP 一般都是国外用的多，国内没什么人用，并且需要联网，跟邮件也没什么区别。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此款 UPS，相对热门 APC 等品牌更便宜，功能上也算完备，但肯定也有一些不足之处。</p><ul><li>配套<strong>软件不易用</strong>，使用 Unraid 系统可搭配插件使用，若搭配群晖等系统不一定能完美使用；</li><li>插座位置在机箱后部，<strong>插拔不方便</strong>；</li><li><strong>只能用三孔插座</strong>，双孔插头要扩展插线板使用；</li><li><strong>插座间隔太近</strong>，下面两个插座不易插入；</li><li>虽然没有用过，但在转化率和功率方面感觉上肯定不如大牌。</li></ul><p>暂时就这些了。。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开箱简评 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开箱 </tag>
+            
+            <tag> UPS </tag>
+            
+            <tag> 雷迪司 </tag>
+            
+            <tag> 电源 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>海韵 Focus GX550 80Plus 金牌全模电源开箱</title>
+      <link href="/2020/03/03/%E6%B5%B7%E9%9F%B5%20Focus%20GX550%2080Plus%20%E9%87%91%E7%89%8C%E5%85%A8%E6%A8%A1%E7%94%B5%E6%BA%90%E5%BC%80%E7%AE%B1/"/>
+      <url>/2020/03/03/%E6%B5%B7%E9%9F%B5%20Focus%20GX550%2080Plus%20%E9%87%91%E7%89%8C%E5%85%A8%E6%A8%A1%E7%94%B5%E6%BA%90%E5%BC%80%E7%AE%B1/</url>
+      
+        <content type="html"><![CDATA[<p>一月份（2020）配了台 Nas，本文为该 Nas 系列篇二 —— <strong>电源选购历程及开箱简评</strong>。关于该 Nas 后面会有文章介绍。</p><p>篇一：乔思伯 V4 机箱选购历程及开箱简评，传送门在此。</p><h2 id="选购"><a href="#选购" class="headerlink" title="选购"></a>选购</h2><p>第一次接触电脑电源，简单研究了一下，了解到选购电源需要考虑<strong>可靠性、体积、噪音、功率、接口及品牌</strong>等。</p><ul><li>体积：机箱已经定了，所以电源是标准大小；</li><li>功率：整机带两个硬盘带网卡装好功率最高不超过 80W，随便一款电源对半打折都能满足这个功率；</li><li>目前 Nas 没有升级需求，普通电源够用。所以最终要考虑的只有<strong>噪音</strong>和<strong>可靠性</strong>。</li></ul><h3 id="噪音"><a href="#噪音" class="headerlink" title="噪音"></a>噪音</h3><p>噪音方面比较直观，上电听一下就知道能不能忍受了。</p><p>但我是第一次配，家里也没电脑，没有长期在主机电脑旁待过，所以对电脑电源的噪音大小没有认知。且 Nas 功率小，就抱着试试看的态度在狗东 99 买了长城的 250W 电源，说不定 99 噪音就能忍受呢！</p><p>结果，，，，超乎想象 —— 风扇一直转，噪音随你便。</p><h3 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h3><p>一块 14T 硬盘都够几个自组 Nas 的钱了，所以硬盘安全很重要，而影响硬盘寿命的一个重要因素就是电源好坏，电源好输出稳定，更省电（虽然可忽略），还有一个重要因素是断电。虽然可靠性比较玄学，但对于我的小功率 Nas，买大品牌的金银牌电源也够稳了。</p><h2 id="99-块的长城"><a href="#99-块的长城" class="headerlink" title="99 块的长城"></a>99 块的长城</h2><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%95%BF%E5%9F%8E%E5%8F%82%E6%95%B0%20-%20c83ca.jpg" alt="长城参数"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%95%BF%E5%9F%8E%E8%83%8C%E9%9D%A2%20-%206fcde.jpg" alt="长城背面"><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%95%BF%E5%9F%8E%E9%A3%8E%E6%89%87%20-%20fc8ec.jpg" alt="长城风扇"><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%95%BF%E5%9F%8E%E7%BA%BF%E6%9D%90%20-%206b21e.jpg" alt="长城线材">这肯定要换啊，但是已经退不了了。听闻海韵噪音小，就想试试看。去京东把所有电源筛选了一遍，支持随 CPU 使用情况调节转速的不多，很多介绍都是模棱两可。</p><p>有了第一次的教训，现在看到不是主打静音的都不敢买。海韵的也看了，中高端的都支持低负载下风扇停转，很是心动，但价格要 649 起步。</p><p>鉴于年关将近，犹豫哪怕几个小时快递可能就不送了，刚好有活动减了 50，于是咬牙买了<strong>海韵 Focus GX550 80Plus 550W</strong>，<strong>支持风扇启停</strong>，第二天降价，保价减了 50，虽不是最低价，但也可以了。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E8%AE%A2%E5%8D%95%20-%2088562.jpg" alt="订单"></p><h2 id="海韵-Focus-GX550，对比海韵经典铜牌-S12Ⅲ"><a href="#海韵-Focus-GX550，对比海韵经典铜牌-S12Ⅲ" class="headerlink" title="海韵 Focus GX550，对比海韵经典铜牌 S12Ⅲ"></a>海韵 Focus GX550，对比海韵经典铜牌 S12Ⅲ</h2><ul><li><p>整体包装、做工都很好，质感不错。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%E5%8C%85%E8%A3%85%E5%8F%82%E6%95%B0%20-%20302c1.jpg" alt="海韵包装参数"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%E6%89%80%E6%9C%89%E9%85%8D%E4%BB%B6%20-%20eacd4.jpg" alt="海韵所有配件"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%94%B5%E6%BA%90%E7%9B%92%E5%AD%90%20-%209a594.jpg" alt="电源盒子"></p><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%94%B5%E6%BA%90%E6%AD%A3%E9%9D%A2%20-%20eebf6.jpg" alt="电源正面"></p></li><li><p>打开包装，还以为是一张 50 美元 Steam 充值卡，原来只是抽奖；<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%20steam%20%E5%85%85%E5%80%BC%E5%8D%A1%20-%20deb70.jpg" alt="海韵 steam 充值卡"></p></li><li><p>电源开关旁边有一个 Hybrid Mode 按键，按下后在负载占用 50% 以下风扇是不转的。我的理解是假如按照 550W 满载，那一半负载就是 275W，我 Nas 的这个配置怎么也达不到这个功率，所以风扇应该一直就是停转状态，完全无噪音。按键弹出后，风扇转动，但即使是在安静的晚上，离风扇一米，也听不到任何声音。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%94%B5%E6%BA%90%E8%83%8C%E9%9D%A2%20-%2021b10.jpg" alt="电源背面"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%E9%A3%8E%E6%89%87%20-%201513b.jpg" alt="海韵风扇"></p></li><li><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%E5%85%A8%E6%A8%A1%E6%8E%A5%E5%8F%A3%20-%2044961.jpg" alt="海韵全模接口">全模组接口，线材很多。</p></li></ul><p><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%E4%B8%BB%E6%9C%BA%E5%8F%8A%E7%BA%BF%E6%9D%90%20-%205e59c.jpg" alt="海韵主机及线材"></p><ul><li>这款电源的京东评价里很多都是说通电风扇不转，以为是坏的，给了差评。</li><li>S12Ⅲ 的包装要比 Focus 简陋很多，但 S12Ⅲ 的风扇噪音也不大，比 Focus 风扇转动的时候噪音大了一点点。长城就不用说了，包装噪音都不能忍。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%B7%E9%9D%99%E7%8E%8B%E5%8C%85%E8%A3%85%E5%8F%82%E6%95%B0%20-%2016a66.jpg" alt="冷静王包装参数"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%B7%E9%9D%99%E7%8E%8B%E8%83%8C%E9%9D%A2%20-%20e6085.jpg" alt="冷静王背面"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%B7%E9%9D%99%E7%8E%8B%E9%A3%8E%E6%89%87%E9%9D%A2%20-%200559b.jpg" alt="冷静王风扇面"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%B7%E9%9D%99%E7%8E%8B%E9%85%8D%E4%BB%B6%E4%B8%80%E8%A7%88%20-%2021f09.jpg" alt="冷静王配件一览"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%B7%E9%9D%99%E7%8E%8B%E7%BA%BF%E6%9D%90%20-%20b9808.jpg" alt="冷静王线材"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%B7%E9%9D%99%E7%8E%8B%E6%AD%A3%E9%9D%A2%20-%20f5de1.jpg" alt="冷静王正面"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%A4%E7%9B%92%E5%AD%90%E5%AF%B9%E6%AF%94%20-%20a0d11.jpg" alt="两盒子对比"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B5%B7%E9%9F%B5%E5%8F%8A%E5%86%B7%E9%9D%99%E7%8E%8B%E5%AF%B9%E6%AF%94%20-%2060a18.jpg" alt="海韵及冷静王对比"></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>长城虽然垃圾，不过毕竟价格摆在那里。99 块其他牌子估计也这样。</li><li>S12Ⅲ 其实已经符合我的需求，足够静音了，但没有对比就没有伤害，虽然贵了 200，但还是想要 Focus。</li><li>海韵虽然贵，但十年质保，物有所值，到手后心疼的感觉就几乎没有了。不过， 金牌全模用在 Nas 上感觉有些大材小用了，考虑以后给电脑用。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开箱简评 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开箱 </tag>
+            
+            <tag> 电源 </tag>
+            
+            <tag> 海韵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>乔思伯 V4 开箱简评</title>
+      <link href="/2020/02/02/%E4%B9%94%E6%80%9D%E4%BC%AF%20V4%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/"/>
+      <url>/2020/02/02/%E4%B9%94%E6%80%9D%E4%BC%AF%20V4%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/</url>
+      
+        <content type="html"><![CDATA[<p>一月份（2020）配了台 Nas，本文为该 Nas 系列篇一 —— <strong>机箱选购历程及开箱简评</strong>。关于该 Nas 以后会出文章详细介绍。</p><p>第一次配主机，没什么经验，且年关将近，只剩京东自营可以送了，就入手了这款，价格一直是坚挺的 229。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%95%86%E5%93%81%E7%95%8C%E9%9D%A2%20-%20db6bd.webp" alt="商品界面"><br>主要是看中了外观比较简约，且机箱貌似不太大的样子。</p><h2 id="外观展示"><a href="#外观展示" class="headerlink" title="外观展示"></a>外观展示</h2><p>快递挺大一纸箱。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%A4%96%E8%A7%82%E7%BB%84%E5%90%88%20-%20464c1.webp" alt="外观组合"><br>上下有泡沫、产品有保护膜保护。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%B3%A1%E6%B2%AB%E7%BB%84%E5%90%88%20-%20f08b3.webp" alt="泡沫组合"><br>所有螺丝配件及尺寸说明（忘记旋转了）。。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E9%85%8D%E4%BB%B6%E6%B8%85%E5%8D%95%20-%20352df.webp" alt="配件清单"><br>前后左右一览。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%89%8D%E5%90%8E%E5%B7%A6%E5%8F%B3%20-%206180a.webp" alt="前后左右"><br>顶部底部一览。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%B8%8A%E4%B8%8B%E7%BB%84%E5%90%88%20-%205f6f7.webp" alt="上下组合"><br>内部一览。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%86%85%E9%83%A8%20-%20f0c12.webp" alt="内部"><br>所有的螺丝及束带。<br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E6%89%80%E6%9C%89%E8%9E%BA%E4%B8%9D%20-%20f6e09.webp" alt="所有螺丝"></p><h2 id="使用感受"><a href="#使用感受" class="headerlink" title="使用感受"></a>使用感受</h2><ul><li>快递挺大一个箱子，打开后，机箱上下都有泡沫保护，周身有一层塑料薄套。</li><li>机箱表面不是光滑的，但也不算是磨砂，摸起来<strong>比较粗糙</strong>，就感觉像那种镀锌螺丝。边角比较割手，且组装的时候摩擦力很大，要很用力才能合起来，组装的时候要小心。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%A1%8C%E6%89%8B%20-%20df263.webp" alt="硌手"></li><li>体积比想象中大了很多，对比蜗牛如下，几乎是两倍了。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%AF%B9%E6%AF%94%E8%9C%97%E7%89%9B%20-%20cbd04.webp" alt="对比蜗牛"></li><li>前面板下方是一个开机按键，<strong>触感较生硬</strong>。接好线，开机后蓝灯常亮，硬盘活动时红灯亮，看起来就是紫色。灯的亮度较高，晚上可能会有影响。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%BC%80%E6%9C%BA%E9%94%AE%20-%20dc726.webp" alt="开机键"></li><li>右侧面板左下方是 USB 及音频接口，一个 3.0 一个 2.0；<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E5%8F%B3%E4%BE%A7%E6%8E%A5%E5%8F%A3%20-%20fc440.webp" alt="右侧接口"></li><li>左侧面板一片孔洞，应该是进风口。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E4%BE%A7%E7%9B%96%E7%BB%84%E5%90%88%20-%204a334.webp" alt="侧盖组合"></li><li>拆下面板后，下方是一个支架，可以放<strong>两块硬盘</strong>，上方是电源区域。<img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%A1%AC%E7%9B%98%E6%9E%B6%201%20-%208bf24.webp" alt="硬盘架 1"><br><img src="https://cdn.jsdelivr.net/gh/xushier/img-opt@main/PicGo/2023-03-30/%E7%A1%AC%E7%9B%98%E6%9E%B6%202%20-%206bf4a.webp" alt="硬盘架 2"></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>不太建议买，从官网看是 <strong>12 年</strong>的产品，到现在价格还很坚挺，从年前到现在没变过。</li><li>机箱<strong>硌手，触感不好</strong>，硬盘位感觉有点问题，两块硬盘放进去一个月就都坏掉了。</li><li>机箱<strong>太大</strong>，与 Nas 的特点相悖。即使当做家庭电脑主机来用，也是稍大的。</li></ul><p>下次回去准备换个别的机箱，这个就先闲置，以后用来组装个家用电脑。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开箱简评 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开箱 </tag>
+            
+            <tag> 机箱 </tag>
+            
+            <tag> 乔斯伯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
