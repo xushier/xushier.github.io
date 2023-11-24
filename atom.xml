@@ -6,7 +6,7 @@
   <link href="https://xushier.github.io/atom.xml" rel="self"/>
   
   <link href="https://xushier.github.io/"/>
-  <updated>2023-03-30T03:18:19.709Z</updated>
+  <updated>2023-11-24T03:33:04.358Z</updated>
   <id>https://xushier.github.io/</id>
   
   <author>
@@ -17,11 +17,411 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>集成相册、影视、备份、DDNS 的 Nas 文件管理器</title>
+    <link href="https://xushier.github.io/2023/07/20/%E9%9B%86%E6%88%90%E7%9B%B8%E5%86%8C%E3%80%81%E5%BD%B1%E8%A7%86%E3%80%81%E5%A4%87%E4%BB%BD%E3%80%81DDNS%20%E7%9A%84%20Nas%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/"/>
+    <id>https://xushier.github.io/2023/07/20/%E9%9B%86%E6%88%90%E7%9B%B8%E5%86%8C%E3%80%81%E5%BD%B1%E8%A7%86%E3%80%81%E5%A4%87%E4%BB%BD%E3%80%81DDNS%20%E7%9A%84%20Nas%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</id>
+    <published>2023-07-20T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:04.358Z</updated>
+    
+    
+    <summary type="html">包含照片备份、智能相册、影视刮削播放、文件备份以及 DDNS 的 Nas 文件管理器。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="文件管理" scheme="https://xushier.github.io/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="文件备份" scheme="https://xushier.github.io/tags/%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD/"/>
+    
+    <category term="照片备份" scheme="https://xushier.github.io/tags/%E7%85%A7%E7%89%87%E5%A4%87%E4%BB%BD/"/>
+    
+    <category term="智能相册" scheme="https://xushier.github.io/tags/%E6%99%BA%E8%83%BD%E7%9B%B8%E5%86%8C/"/>
+    
+    <category term="DDNS" scheme="https://xushier.github.io/tags/DDNS/"/>
+    
+    <category term="Nascab" scheme="https://xushier.github.io/tags/Nascab/"/>
+    
+    <category term="付费" scheme="https://xushier.github.io/tags/%E4%BB%98%E8%B4%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unraid 应用市场和系统的快捷代理切换工具 Proxy Editor</title>
+    <link href="https://xushier.github.io/2023/06/25/Unraid%20%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%90%86%E5%88%87%E6%8D%A2%E5%B7%A5%E5%85%B7%20Proxy%20Editor/"/>
+    <id>https://xushier.github.io/2023/06/25/Unraid%20%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BF%AB%E6%8D%B7%E4%BB%A3%E7%90%86%E5%88%87%E6%8D%A2%E5%B7%A5%E5%85%B7%20Proxy%20Editor/</id>
+    <published>2023-06-25T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:04.361Z</updated>
+    
+    
+    <summary type="html">快捷的将代理应用到 Unraid 应用市场和系统中，并可快速在三个不同的代理之间切换。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="插件" scheme="https://xushier.github.io/categories/Unraid/%E6%8F%92%E4%BB%B6/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="插件" scheme="https://xushier.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="代理" scheme="https://xushier.github.io/tags/%E4%BB%A3%E7%90%86/"/>
+    
+    <category term="应用市场" scheme="https://xushier.github.io/tags/%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA/"/>
+    
+    <category term="proxy" scheme="https://xushier.github.io/tags/proxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unraid 自动检测 ZFS 池，ZFS 池可视化显示</title>
+    <link href="https://xushier.github.io/2023/06/25/Unraid%20%E8%87%AA%E5%8A%A8%E6%A3%80%E6%B5%8B%20ZFS%20%E6%B1%A0%EF%BC%8CZFS%20%E6%B1%A0%E5%8F%AF%E8%A7%86%E5%8C%96%E6%98%BE%E7%A4%BA/"/>
+    <id>https://xushier.github.io/2023/06/25/Unraid%20%E8%87%AA%E5%8A%A8%E6%A3%80%E6%B5%8B%20ZFS%20%E6%B1%A0%EF%BC%8CZFS%20%E6%B1%A0%E5%8F%AF%E8%A7%86%E5%8C%96%E6%98%BE%E7%A4%BA/</id>
+    <published>2023-06-25T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:04.355Z</updated>
+    
+    
+    <summary type="html">自动检测系统中的 ZFS 池，并显示池的相关信息。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="插件" scheme="https://xushier.github.io/categories/Unraid/%E6%8F%92%E4%BB%B6/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="插件" scheme="https://xushier.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="ZFS" scheme="https://xushier.github.io/tags/ZFS/"/>
+    
+    <category term="Zpool" scheme="https://xushier.github.io/tags/Zpool/"/>
+    
+    <category term="可视化" scheme="https://xushier.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    <category term="管理" scheme="https://xushier.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="文件系统" scheme="https://xushier.github.io/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPN 整合代理分流工具 Clash 前端</title>
+    <link href="https://xushier.github.io/2023/06/25/VPN%20%E6%95%B4%E5%90%88%E4%BB%A3%E7%90%86%E5%88%86%E6%B5%81%E5%B7%A5%E5%85%B7%20Clash%20%E5%89%8D%E7%AB%AF/"/>
+    <id>https://xushier.github.io/2023/06/25/VPN%20%E6%95%B4%E5%90%88%E4%BB%A3%E7%90%86%E5%88%86%E6%B5%81%E5%B7%A5%E5%85%B7%20Clash%20%E5%89%8D%E7%AB%AF/</id>
+    <published>2023-06-25T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:04.359Z</updated>
+    
+    
+    <summary type="html">给 Clash 后端程序提供一个界面，方便查看节点、日志、连接，快捷测速、切换节点等。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="代理" scheme="https://xushier.github.io/tags/%E4%BB%A3%E7%90%86/"/>
+    
+    <category term="订阅" scheme="https://xushier.github.io/tags/%E8%AE%A2%E9%98%85/"/>
+    
+    <category term="VPN" scheme="https://xushier.github.io/tags/VPN/"/>
+    
+    <category term="SS" scheme="https://xushier.github.io/tags/SS/"/>
+    
+    <category term="SSR" scheme="https://xushier.github.io/tags/SSR/"/>
+    
+    <category term="Clash" scheme="https://xushier.github.io/tags/Clash/"/>
+    
+    <category term="V2Ray" scheme="https://xushier.github.io/tags/V2Ray/"/>
+    
+    <category term="分流" scheme="https://xushier.github.io/tags/%E5%88%86%E6%B5%81/"/>
+    
+    <category term="前端" scheme="https://xushier.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPN 整合代理分流工具 Clash 后端</title>
+    <link href="https://xushier.github.io/2023/06/25/VPN%20%E6%95%B4%E5%90%88%E4%BB%A3%E7%90%86%E5%88%86%E6%B5%81%E5%B7%A5%E5%85%B7%20Clash%20%E5%90%8E%E7%AB%AF/"/>
+    <id>https://xushier.github.io/2023/06/25/VPN%20%E6%95%B4%E5%90%88%E4%BB%A3%E7%90%86%E5%88%86%E6%B5%81%E5%B7%A5%E5%85%B7%20Clash%20%E5%90%8E%E7%AB%AF/</id>
+    <published>2023-06-25T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:04.356Z</updated>
+    
+    
+    <summary type="html">将各种 VPN 整合起来，并代理出来供其他程序使用，通过规则来对请求进行分流。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="代理" scheme="https://xushier.github.io/tags/%E4%BB%A3%E7%90%86/"/>
+    
+    <category term="订阅" scheme="https://xushier.github.io/tags/%E8%AE%A2%E9%98%85/"/>
+    
+    <category term="VPN" scheme="https://xushier.github.io/tags/VPN/"/>
+    
+    <category term="SS" scheme="https://xushier.github.io/tags/SS/"/>
+    
+    <category term="SSR" scheme="https://xushier.github.io/tags/SSR/"/>
+    
+    <category term="Clash" scheme="https://xushier.github.io/tags/Clash/"/>
+    
+    <category term="V2Ray" scheme="https://xushier.github.io/tags/V2Ray/"/>
+    
+    <category term="分流" scheme="https://xushier.github.io/tags/%E5%88%86%E6%B5%81/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="后端" scheme="https://xushier.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPN 订阅链接互相转换的前端 SubWeb</title>
+    <link href="https://xushier.github.io/2023/06/20/VPN%20%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%89%8D%E7%AB%AF%20SubWeb/"/>
+    <id>https://xushier.github.io/2023/06/20/VPN%20%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%89%8D%E7%AB%AF%20SubWeb/</id>
+    <published>2023-06-20T00:00:00.000Z</published>
+    <updated>2023-11-24T03:33:21.905Z</updated>
+    
+    
+    <summary type="html">在前端界面通过粘贴和点击的方式，快捷地将 SS、SSR、VMESS 等协议的链接以及订阅地址，转换成各种 VPN 客户端所支持的订阅文件。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="订阅" scheme="https://xushier.github.io/tags/%E8%AE%A2%E9%98%85/"/>
+    
+    <category term="VPN" scheme="https://xushier.github.io/tags/VPN/"/>
+    
+    <category term="SS" scheme="https://xushier.github.io/tags/SS/"/>
+    
+    <category term="SSR" scheme="https://xushier.github.io/tags/SSR/"/>
+    
+    <category term="Clash" scheme="https://xushier.github.io/tags/Clash/"/>
+    
+    <category term="分流" scheme="https://xushier.github.io/tags/%E5%88%86%E6%B5%81/"/>
+    
+    <category term="前端" scheme="https://xushier.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="订阅转换" scheme="https://xushier.github.io/tags/%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2/"/>
+    
+    <category term="V2ray" scheme="https://xushier.github.io/tags/V2ray/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPN 订阅链接互相转换的后端 SubConverter</title>
+    <link href="https://xushier.github.io/2023/06/19/VPN%20%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%90%8E%E7%AB%AF%20SubConverter/"/>
+    <id>https://xushier.github.io/2023/06/19/VPN%20%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%90%8E%E7%AB%AF%20SubConverter/</id>
+    <published>2023-06-19T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:21.908Z</updated>
+    
+    
+    <summary type="html">可以将 SS、SSR、VMESS 等协议的链接以及订阅地址，转换成各种 VPN 客户端所支持的订阅文件。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="订阅" scheme="https://xushier.github.io/tags/%E8%AE%A2%E9%98%85/"/>
+    
+    <category term="VPN" scheme="https://xushier.github.io/tags/VPN/"/>
+    
+    <category term="SS" scheme="https://xushier.github.io/tags/SS/"/>
+    
+    <category term="SSR" scheme="https://xushier.github.io/tags/SSR/"/>
+    
+    <category term="Clash" scheme="https://xushier.github.io/tags/Clash/"/>
+    
+    <category term="V2Ray" scheme="https://xushier.github.io/tags/V2Ray/"/>
+    
+    <category term="分流" scheme="https://xushier.github.io/tags/%E5%88%86%E6%B5%81/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="订阅转换" scheme="https://xushier.github.io/tags/%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个全能又漂亮的服务器导航页 Homarr</title>
+    <link href="https://xushier.github.io/2023/06/13/%E4%B8%80%E4%B8%AA%E5%85%A8%E8%83%BD%E5%8F%88%E6%BC%82%E4%BA%AE%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%BC%E8%88%AA%E9%A1%B5%20Homarr/"/>
+    <id>https://xushier.github.io/2023/06/13/%E4%B8%80%E4%B8%AA%E5%85%A8%E8%83%BD%E5%8F%88%E6%BC%82%E4%BA%AE%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%BC%E8%88%AA%E9%A1%B5%20Homarr/</id>
+    <published>2023-06-13T05:00:00.000Z</published>
+    <updated>2023-11-24T03:33:21.903Z</updated>
+    
+    
+    <summary type="html">显示服务器硬件信息、RSS 订阅、Docker 容器、内嵌视频、数据交互、网页书签等等的一个全能又漂亮的导航页。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="数据监控" scheme="https://xushier.github.io/tags/%E6%95%B0%E6%8D%AE%E7%9B%91%E6%8E%A7/"/>
+    
+    <category term="仪表盘" scheme="https://xushier.github.io/tags/%E4%BB%AA%E8%A1%A8%E7%9B%98/"/>
+    
+    <category term="导航页" scheme="https://xushier.github.io/tags/%E5%AF%BC%E8%88%AA%E9%A1%B5/"/>
+    
+    <category term="Homarr" scheme="https://xushier.github.io/tags/Homarr/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个 Navidrome 的前端界面</title>
+    <link href="https://xushier.github.io/2023/06/12/%E4%B8%80%E4%B8%AA%20Navidrome%20%E7%9A%84%E5%89%8D%E7%AB%AF%E7%95%8C%E9%9D%A2/"/>
+    <id>https://xushier.github.io/2023/06/12/%E4%B8%80%E4%B8%AA%20Navidrome%20%E7%9A%84%E5%89%8D%E7%AB%AF%E7%95%8C%E9%9D%A2/</id>
+    <published>2023-06-12T00:00:00.000Z</published>
+    <updated>2023-11-24T03:33:21.901Z</updated>
+    
+    
+    <summary type="html">Navidrome 的一个可选前端音乐播放器</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="前端" scheme="https://xushier.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="音乐" scheme="https://xushier.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+    <category term="播放器" scheme="https://xushier.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/"/>
+    
+    <category term="Navidrome" scheme="https://xushier.github.io/tags/Navidrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个界面简约美观操作丝滑的 Nas 音乐播放器 SwingMusic</title>
+    <link href="https://xushier.github.io/2023/05/24/%E4%B8%80%E4%B8%AA%E7%95%8C%E9%9D%A2%E7%AE%80%E7%BA%A6%E7%BE%8E%E8%A7%82%E6%93%8D%E4%BD%9C%E4%B8%9D%E6%BB%91%E7%9A%84%20Nas%20%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%20SwingMusic/"/>
+    <id>https://xushier.github.io/2023/05/24/%E4%B8%80%E4%B8%AA%E7%95%8C%E9%9D%A2%E7%AE%80%E7%BA%A6%E7%BE%8E%E8%A7%82%E6%93%8D%E4%BD%9C%E4%B8%9D%E6%BB%91%E7%9A%84%20Nas%20%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%20SwingMusic/</id>
+    <published>2023-05-24T00:00:00.000Z</published>
+    <updated>2023-11-24T03:33:21.907Z</updated>
+    
+    
+    <summary type="html">界面简约美观，风格类似 Spotify、操作丝滑的 Nas 本地音乐播放器</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="音乐" scheme="https://xushier.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+    <category term="播放器" scheme="https://xushier.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个漂亮的服务器仪表盘 DashDot</title>
+    <link href="https://xushier.github.io/2023/05/22/%E4%B8%80%E4%B8%AA%E6%BC%82%E4%BA%AE%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%AA%E8%A1%A8%E7%9B%98%20DashDot/"/>
+    <id>https://xushier.github.io/2023/05/22/%E4%B8%80%E4%B8%AA%E6%BC%82%E4%BA%AE%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%AA%E8%A1%A8%E7%9B%98%20DashDot/</id>
+    <published>2023-05-22T00:00:00.000Z</published>
+    <updated>2023-11-24T03:33:21.904Z</updated>
+    
+    
+    <summary type="html">监控服务器系统、处理器、内存、存储、网络、显卡，拥有 API 接口的一个漂亮的仪表盘。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/categories/Unraid/Docker/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="Docker" scheme="https://xushier.github.io/tags/Docker/"/>
+    
+    <category term="数据监控" scheme="https://xushier.github.io/tags/%E6%95%B0%E6%8D%AE%E7%9B%91%E6%8E%A7/"/>
+    
+    <category term="仪表盘" scheme="https://xushier.github.io/tags/%E4%BB%AA%E8%A1%A8%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>硬盘损坏？别急着格式化！</title>
+    <link href="https://xushier.github.io/2023/05/18/%E7%A1%AC%E7%9B%98%E6%8D%9F%E5%9D%8F%EF%BC%9F%E5%88%AB%E6%80%A5%E7%9D%80%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%81/"/>
+    <id>https://xushier.github.io/2023/05/18/%E7%A1%AC%E7%9B%98%E6%8D%9F%E5%9D%8F%EF%BC%9F%E5%88%AB%E6%80%A5%E7%9D%80%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%81/</id>
+    <published>2023-05-18T00:00:00.000Z</published>
+    <updated>2023-11-24T03:33:26.226Z</updated>
+    
+    
+    <summary type="html">修复由于日志错误导致的 XFS 格式硬盘不能挂载的问题。</summary>
+    
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/categories/Unraid/"/>
+    
+    
+    <category term="Unraid" scheme="https://xushier.github.io/tags/Unraid/"/>
+    
+    <category term="硬盘修复" scheme="https://xushier.github.io/tags/%E7%A1%AC%E7%9B%98%E4%BF%AE%E5%A4%8D/"/>
+    
+    <category term="XFS" scheme="https://xushier.github.io/tags/XFS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mac HFS 格式移动硬盘数据恢复小记</title>
     <link href="https://xushier.github.io/2023/03/08/Mac%20HFS%20%E6%A0%BC%E5%BC%8F%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B0%8F%E8%AE%B0/"/>
     <id>https://xushier.github.io/2023/03/08/Mac%20HFS%20%E6%A0%BC%E5%BC%8F%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B0%8F%E8%AE%B0/</id>
     <published>2023-03-08T05:08:00.000Z</published>
-    <updated>2023-03-30T03:18:19.709Z</updated>
+    <updated>2023-03-30T03:18:19.000Z</updated>
     
     
     <summary type="html">使用数据恢复工具找回不小心删掉的文件。</summary>
@@ -44,7 +444,7 @@
     <link href="https://xushier.github.io/2020/05/05/KPW3%20%E4%B8%8E%20KPW4%20%E4%B8%8D%E5%AE%8C%E5%85%A8%E5%AF%B9%E6%AF%94/"/>
     <id>https://xushier.github.io/2020/05/05/KPW3%20%E4%B8%8E%20KPW4%20%E4%B8%8D%E5%AE%8C%E5%85%A8%E5%AF%B9%E6%AF%94/</id>
     <published>2020-05-05T00:08:00.000Z</published>
-    <updated>2023-03-30T03:59:42.642Z</updated>
+    <updated>2023-03-30T03:59:42.000Z</updated>
     
     
     <summary type="html">关于 KPW 4 与 KPW 3 外观、屏幕、接口等方面的对比。</summary>
@@ -71,7 +471,7 @@
     <link href="https://xushier.github.io/2020/05/05/%E5%85%88%E9%94%8B%20DLD-D15%20%E8%90%BD%E5%9C%B0%E6%89%87%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/"/>
     <id>https://xushier.github.io/2020/05/05/%E5%85%88%E9%94%8B%20DLD-D15%20%E8%90%BD%E5%9C%B0%E6%89%87%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/</id>
     <published>2020-05-05T00:08:00.000Z</published>
-    <updated>2023-03-30T04:00:08.552Z</updated>
+    <updated>2023-03-30T04:00:08.000Z</updated>
     
     
     <summary type="html">先锋 DLD-D15 落地风扇开箱晒单及简评。</summary>
@@ -96,7 +496,7 @@
     <link href="https://xushier.github.io/2020/04/04/%E9%9B%B7%E8%BF%AA%E5%8F%B8%20H1000M%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84%E5%8F%8A%E8%AE%BE%E7%BD%AE%E4%BD%BF%E7%94%A8/"/>
     <id>https://xushier.github.io/2020/04/04/%E9%9B%B7%E8%BF%AA%E5%8F%B8%20H1000M%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84%E5%8F%8A%E8%AE%BE%E7%BD%AE%E4%BD%BF%E7%94%A8/</id>
     <published>2020-04-04T00:08:00.000Z</published>
-    <updated>2023-03-30T03:59:54.912Z</updated>
+    <updated>2023-03-30T03:59:54.000Z</updated>
     
     
     <summary type="html">雷迪司 H1000M UPS 简单晒单开箱及快速配置使用。</summary>
@@ -121,7 +521,7 @@
     <link href="https://xushier.github.io/2020/03/03/%E6%B5%B7%E9%9F%B5%20Focus%20GX550%2080Plus%20%E9%87%91%E7%89%8C%E5%85%A8%E6%A8%A1%E7%94%B5%E6%BA%90%E5%BC%80%E7%AE%B1/"/>
     <id>https://xushier.github.io/2020/03/03/%E6%B5%B7%E9%9F%B5%20Focus%20GX550%2080Plus%20%E9%87%91%E7%89%8C%E5%85%A8%E6%A8%A1%E7%94%B5%E6%BA%90%E5%BC%80%E7%AE%B1/</id>
     <published>2020-03-03T00:08:00.000Z</published>
-    <updated>2023-03-30T03:59:49.376Z</updated>
+    <updated>2023-03-30T03:59:49.000Z</updated>
     
     
     <summary type="html">海韵 Focus GX550 80Plus 金牌全模电源以及海韵冷静王开箱简评及简单对比。</summary>
@@ -144,7 +544,7 @@
     <link href="https://xushier.github.io/2020/02/02/%E4%B9%94%E6%80%9D%E4%BC%AF%20V4%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/"/>
     <id>https://xushier.github.io/2020/02/02/%E4%B9%94%E6%80%9D%E4%BC%AF%20V4%20%E5%BC%80%E7%AE%B1%E7%AE%80%E8%AF%84/</id>
     <published>2020-02-02T00:08:00.000Z</published>
-    <updated>2023-03-30T04:00:01.469Z</updated>
+    <updated>2023-03-30T04:00:01.000Z</updated>
     
     
     <summary type="html">乔思伯 V4 机箱简单开箱晒单及总结。</summary>
